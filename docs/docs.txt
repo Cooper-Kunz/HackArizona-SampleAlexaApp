@@ -1,0 +1,11 @@
+https://pythonprogramming.net/intro-alexa-skill-flask-ask-python-tutorial/
+
+https://pythonprogramming.net/headlines-function-alexa-skill-flask-ask-python-tutorial/
+
+https://pythonprogramming.net/testing-deploying-alexa-skill-flask-ask-python-tutorial/
+
+https://alexatutorial.com/flask-ask/
+
+https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uwsgi-and-nginx-on-ubuntu-14-04
+
+http://stackoverflow.com/questions/32487613/running-django-and-flask-at-same-time
