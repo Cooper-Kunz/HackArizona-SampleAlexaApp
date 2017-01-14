@@ -44,7 +44,7 @@ def homepage():
 
 @ask.launch
 def start_skill():
-    welcome_message = 'Hi there, is this an emergency?'
+    welcome_message = "Hi there, would you like us to contact emergency services?"
     return question(welcome_message)
 
 @ask.intent("YesIntent")
@@ -56,8 +56,10 @@ def share_headlines():
 
 @ask.intent("NoIntent")
 def no_intent():
-    bye_text = 'what is happening then?'
+    bye_text = "how can I help you then?"
     return statement(bye_text)
+
+@ask.intent
     
 if __name__ == '__main__':
     app.run(debug=True)
