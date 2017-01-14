@@ -44,22 +44,20 @@ def homepage():
 
 @ask.launch
 def start_skill():
-    welcome_message = "Hi there, would you like us to contact emergency services?"
+    welcome_message = "Hi there, would you like us to message your emergency contact?"
     return question(welcome_message)
 
 @ask.intent("YesIntent")
 def share_headlines():
     headlines = get_headlines()
     headline_msg = 'Calling 911 and alerting your emergency contacts. Hold on...'
-    send_text("+16025617960", "Your emergency contact is wanting to notify you.")
+    send_text("+16025617960", "Your emergency contact from My CareTaker is attempting to notify you.")
     return statement(headline_msg)
 
 @ask.intent("NoIntent")
 def no_intent():
-    bye_text = "how can I help you then?"
+    bye_text = "What do you need assistance with?"
     return statement(bye_text)
 
-@ask.intent
-    
 if __name__ == '__main__':
     app.run(debug=True)
