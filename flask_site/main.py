@@ -29,18 +29,18 @@ def homepage():
 
 @ask.launch
 def start_skill():
-    welcome_message = 'Hello there, would you like the news?'
+    welcome_message = 'Hi there, is this an emergency?'
     return question(welcome_message)
 
 @ask.intent("YesIntent")
 def share_headlines():
     headlines = get_headlines()
-    headline_msg = 'The current world news headlines are {}'.format(headlines)
+    headline_msg = 'Calling 911 and alerting your emergency contacts. Hold on...'
     return statement(headline_msg)
 
 @ask.intent("NoIntent")
 def no_intent():
-    bye_text = 'I am not sure why you asked me to run then, but okay... bye'
+    bye_text = 'what is happening, then?'
     return statement(bye_text)
     
 if __name__ == '__main__':
