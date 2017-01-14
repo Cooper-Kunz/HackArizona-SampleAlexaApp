@@ -62,7 +62,7 @@ def no_intent():
     bye_text = "Okay, which medical procedure would you like me to walk you through?"
     return question(bye_text)
 
-@ask.intent("medical_intent")
+@ask.intent("medical_intent", mapping={"medical_intent": "procedure")
 def medical_intent(procedure):
     text = "So you want help with %s." % (procedure)
     medical_procedure = procedure
