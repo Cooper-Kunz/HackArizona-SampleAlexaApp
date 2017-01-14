@@ -8,9 +8,9 @@ from twilio.rest import TwilioRestClient
 
 app = Flask(__name__)
 ask = Ask(app, "/reddit_reader")
-procedure = None
 current_step = 0
 end_step = 3
+medical_procedure = None
 
 def send_text(outgoing, body):
     # put your own credentials here
@@ -65,6 +65,7 @@ def no_intent():
 @ask.intent("medical_intent")
 def medical_intent(procedure):
     text = "So you want help with %s." % (procedure)
+    medical_procedure = procedure
     #end_step = last_step_for(procedure)
     #instructions = get_instructions(procedure)
     return statement(text)
