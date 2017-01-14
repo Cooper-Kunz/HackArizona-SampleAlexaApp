@@ -8,6 +8,9 @@ from twilio.rest import TwilioRestClient
 
 app = Flask(__name__)
 ask = Ask(app, "/reddit_reader")
+procedure = None
+current_step = 0
+end_step = 3
 
 def send_text(outgoing, body):
     # put your own credentials here
@@ -44,22 +47,34 @@ def homepage():
 
 @ask.launch
 def start_skill():
-    welcome_message = "Hi there, would you like us to contact emergency services?"
+    welcome_message = "Hi there, would you like us to notify your emergency contacts?"
     return question(welcome_message)
 
 @ask.intent("YesIntent")
 def share_headlines():
     headlines = get_headlines()
-    headline_msg = 'Calling 911 and alerting your emergency contacts. Hold on...'
+    headline_msg = 'Alerting your emergency contacts. Hold on...'
     send_text("+16025617960", "Your emergency contact is wanting to notify you.")
     return statement(headline_msg)
 
 @ask.intent("NoIntent")
 def no_intent():
-    bye_text = "how can I help you then?"
+    bye_text = "Okay, which medical procedure would you like me to walk you through?"
     return statement(bye_text)
 
-@ask.intent
+@ask.intent("medical_intent")
+def medical_intent(procedure):
+    text = "So you want help with %s." % (procedure)
+    end_step = last_step_for(procedure)
+    instructions = get_instructions(procedure)
+
+
+@ask.intent("next")
+
+
+
+
     
+
 if __name__ == '__main__':
     app.run(debug=True)
