@@ -40,7 +40,7 @@ def share_headlines():
 
 @ask.intent("NoIntent")
 def no_intent():
-    bye_text = 'what is happening, then?'
+    bye_text = 'what is happening then?'
     return statement(bye_text)
     
 if __name__ == '__main__':
