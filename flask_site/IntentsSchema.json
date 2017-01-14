@@ -1,0 +1,13 @@
+{
+  	"intents": [
+	{
+		"intent": "medical_intent",
+		"slots": [
+			 {
+				"name": "medical_procedure",
+				"type": "LIST_OF_PROCEDURES"
+			 }
+		]
+	}
+	]
+}
