@@ -65,8 +65,9 @@ def no_intent():
 @ask.intent("medical_intent")
 def medical_intent(procedure):
     text = "So you want help with %s." % (procedure)
-    end_step = last_step_for(procedure)
-    instructions = get_instructions(procedure)
+    #end_step = last_step_for(procedure)
+    #instructions = get_instructions(procedure)
+    return statement(text)
 
 
 if __name__ == '__main__':
