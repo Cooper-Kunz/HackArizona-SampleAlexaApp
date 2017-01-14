@@ -4,7 +4,7 @@
 		"intent": "medical_intent",
 		"slots": [
 			 {
-				"name": "medical_intent",
+				"name": "Procedure",
 				"type": "LIST_OF_PROCEDURES"
 			 }
 		]
