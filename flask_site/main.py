@@ -69,12 +69,5 @@ def medical_intent(procedure):
     instructions = get_instructions(procedure)
 
 
-@ask.intent("next")
-
-
-
-
-    
-
 if __name__ == '__main__':
     app.run(debug=True)
