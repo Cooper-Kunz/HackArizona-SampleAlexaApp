@@ -60,7 +60,7 @@ def share_headlines():
 @ask.intent("NoIntent")
 def no_intent():
     bye_text = "Okay, which medical procedure would you like me to walk you through?"
-    return statement(bye_text)
+    return question(bye_text)
 
 @ask.intent("medical_intent")
 def medical_intent(procedure):
