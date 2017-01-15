@@ -12,7 +12,7 @@ current_step = 0
 end_step = 3
 medical_procedure = None
 PROCEDURE_KEY = "procedure"
-procedure_list = ["nose bleed", "headache"]
+procedure_list = ["nose bleed", "nosebleed", "nose bleeds", "head ache", "heads ache", "headache"]
 
 def send_text(outgoing, body):
     # put your own credentials here
