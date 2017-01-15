@@ -50,12 +50,12 @@ def start_skill():
 @ask.intent("YesIntent")
 def share_headlines():
     global current_step
-    global end_step
-    if (current_step > 0 and current_step < end_step):
+    if (current_step > 0 and current_step < len(steps)):
         end_msg = "would you like to hear the next step?"
         next_step_msg = "Next, %s." % (steps[current_step])
-        if (current_step < end_step - 1): 
+        if (current_step < len(steps)-1): 
             next_step_msg += end_msg
+        current_step += 1
         return question(next_step_msg)
     else:
         if (current_step == end_step):
