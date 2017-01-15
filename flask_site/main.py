@@ -44,15 +44,12 @@ def homepage():
 
 @ask.launch
 def start_skill():
-    if current_step:
-        print(current_step)
-    else:
-        current_step - 0
     welcome_message = "Hi there, would you like us to notify your emergency contacts?"
     return question(welcome_message)
 
 @ask.intent("YesIntent")
 def share_headlines():
+    global current_step
     if (current_step > 0 and current_step < end_step):
         next_step = "Next, %s" % (steps[current_step])
         current_step += 1
@@ -64,6 +61,7 @@ def share_headlines():
 
 @ask.intent("NoIntent")
 def no_intent():
+    global current_step
     if (current_step > 0):
         return statement("Okay then, have a fantastic day! HA! BYE!")
     else:
@@ -72,6 +70,7 @@ def no_intent():
 
 @ask.intent("medical_intent", mapping={"procedure" : "Procedure"})
 def medical_intent(procedure):
+    global current_step
     if (procedure in procedure_list):
         session.attributes[PROCEDURE_KEY] = procedure
     else:
