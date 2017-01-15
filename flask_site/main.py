@@ -51,7 +51,7 @@ def start_skill():
 def share_headlines():
     global current_step
     if (current_step > 0 and current_step < end_step):
-        next_step = "Next, %s" % (steps[current_step])
+        next_step = "Next, %s. Would you like to hear the next step?" % (steps[current_step])
         current_step += 1
         return question(next_step)
     else:
@@ -63,7 +63,7 @@ def share_headlines():
 def no_intent():
     global current_step
     if (current_step > 0):
-        return statement("Okay then, have a fantastic day! HA! BYE!")
+        return statement("Okay then, have a good day.")
     else:
         bye_text = "Okay, which medical procedure would you like me to walk you through?"
         return question(bye_text)
