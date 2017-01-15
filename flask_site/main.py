@@ -50,7 +50,7 @@ def start_skill():
 def share_headlines():
     if (current_step > 0 and current_step < end_step):
         next_step = "Next, %s" % (steps[current_step])
-        current_step++
+        current_step += 1
         return question(next_step)
     else:
         response_msg = 'Alerting your emergency contacts. Hold on...'
@@ -74,7 +74,7 @@ def medical_intent(procedure):
 
     #end_step = last_step_for(procedure)
     #instructions = get_instructions(procedure)
-    current_step++
+    current_step += 1
     text = "To begin treating %s, %s. Would you like to hear the next step?" % (procedure, step0)
     return question(text)
 
