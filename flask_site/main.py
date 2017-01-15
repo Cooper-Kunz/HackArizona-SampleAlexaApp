@@ -58,7 +58,7 @@ def share_headlines():
     else:
         response_msg = 'Alerting your emergency contacts. Hold on...'
         send_text("+16025617960", "Your emergency contact is wanting to notify you.")
-        return statement(headline_msg)
+        return statement(response_msg)
 
 @ask.intent("NoIntent")
 def no_intent():
