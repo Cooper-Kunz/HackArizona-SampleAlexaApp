@@ -18,6 +18,7 @@ step0 = "sit down, and tilt head forward so that the blood drains through the no
 step1 = "Compress the nose. With a finger and thumb, pinch the lower fleshy end of the nose, completely blocking the nostrils. Pinching at this point directly applies pressure at the region where the blood vessels are damaged."
 step2 = "Put ice cubes in your mouth to cool yourself down. Lowering your body temperature can help reduce the blood flow to your nose."
 step3 = "Wash your nose and rest. After bleeding has stopped, you can clean the area around your nose with warm water. After you have cleaned your face, you should rest for a while. This is to help to prevent further bleeding."
+
 steps = [step0, step1, step2, step3]
 
 current_step = 0
@@ -48,6 +49,8 @@ def start_skill():
 
 @ask.intent("YesIntent")
 def share_headlines():
+    for each in steps:
+        print(each)
     if (current_step > 0 and current_step < end_step):
         next_step = "Next, %s" % (steps[current_step])
         current_step += 1
