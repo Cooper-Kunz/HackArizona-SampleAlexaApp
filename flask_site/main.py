@@ -76,7 +76,7 @@ def no_intent():
 
 @ask.intent("medical_intent", mapping={"procedure" : "Procedure"})
 def medical_intent(procedure):
-    print procedure
+    print(procedure)
     global procedure_list
     global current_step
     if (procedure in procedure_list):
