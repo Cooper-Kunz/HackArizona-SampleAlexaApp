@@ -22,7 +22,7 @@ step3 = "Wash your nose and rest. After bleeding has stopped, you can clean the 
 steps = [step0, step1, step2, step3]
 
 current_step = 0
-end_step = 3
+end_step = 4
 
 def send_text(outgoing, body):
     # put your own credentials here
@@ -52,13 +52,18 @@ def share_headlines():
     global current_step
     global end_step
     if (current_step > 0 and current_step < end_step):
-        next_step = "Next, %s. Would you like to hear the next step?" % (steps[current_step])
-        current_step += 1
+        end_msg = "would you like to hear the next step?"
+        next_step = "Next, %s." % (steps[current_step])
+        if (current_step < end_step - 1): 
+            current_step += end_msg
         return question(next_step)
     else:
-        response_msg = 'Alerting your emergency contacts. Hold on...'
-        send_text("+16025617960", "Your emergency contact is wanting to notify you.")
-        return statement(response_msg)
+        if (current_step == end_step):
+            return statement("I hope I helped you today. Goodbye!")
+        else:
+            response_msg = 'Alerting your emergency contacts. Hold on...'
+            send_text("+16025617960", "Your emergency contact is wanting to notify you.")
+            return statement(response_msg)
 
 @ask.intent("NoIntent")
 def no_intent():
@@ -79,8 +84,8 @@ def medical_intent(procedure):
 
     #end_step = last_step_for(procedure)
     #instructions = get_instructions(procedure)
-    current_step += 1
     text = "To begin treating %s, %s. Would you like to hear the next step?" % (procedure, step0)
+    current_step += 1
     return question(text)
 
 
