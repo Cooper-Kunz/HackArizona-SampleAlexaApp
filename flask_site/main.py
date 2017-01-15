@@ -11,6 +11,7 @@ ask = Ask(app, "/reddit_reader")
 current_step = 0
 end_step = 3
 medical_procedure = None
+PROCEDURE_KEY = "procedure"
 
 def send_text(outgoing, body):
     # put your own credentials here
@@ -26,21 +27,6 @@ def send_text(outgoing, body):
     #    body=body,
     #)
 
-def get_headlines():
-    user_pass_dict = {'user': 'sampleaccountname',
-                      'passwd': 'SampleAccountPassword',
-                      'api_type': 'json'}
-    sess = requests.Session()
-    sess.headers.update({'User-Agent': 'I am testing Alexa: sampleaccountname'})
-    sess.post('https://www.reddit.com/api/login', data = user_pass_dict)
-    time.sleep(1)
-    url = 'https://reddit.com/r/worldnews/.json?limit=10'
-    html = sess.get(url)
-    data = json.loads(html.content.decode('utf-8'))
-    titles = [unidecode.unidecode(listing['data']['title']) for listing in data['data']['children']]
-    titles = '... '.join([i for i in titles])
-    return titles
-    
 @app.route('/')
 def homepage():
     return "hi there, how ya doin?"
@@ -65,7 +51,11 @@ def no_intent():
 @ask.intent("medical_intent", mapping={"procedure" : "Procedure"})
 def medical_intent(procedure):
     text = "So you want help with %s." % (procedure)
-    medical_procedure = procedure
+    if (procedure is not None):
+        session.attributes[PROCEDURE_KEY] = procedure
+    else:
+        return question("Sorry, I don't know that procedure. Try another one. Hope you're... okay hahaha.")
+
     #end_step = last_step_for(procedure)
     #instructions = get_instructions(procedure)
     return statement(text)
