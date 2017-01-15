@@ -53,11 +53,11 @@ def share_headlines():
     if (current_step > 0 and current_step < len(steps)):
         next_step_msg = "Next, %s" % (steps[current_step])
         if (current_step < len(steps)-1): 
-            next_step_msg += "would you like to hear the next step?"
+            next_step_msg += " Would you like to hear the next step?"
             current_step += 1
             return question(next_step_msg)
         else:
-            next_step_msg += "I hope I helped you today. Goodbye!"
+            next_step_msg += " I hope I helped you today. Goodbye!"
             return statement(next_step_msg)
     else:
         if (current_step == end_step):
