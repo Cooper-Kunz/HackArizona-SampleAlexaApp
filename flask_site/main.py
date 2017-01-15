@@ -52,7 +52,7 @@ def no_intent():
 @ask.intent("medical_intent", mapping={"procedure" : "Procedure"})
 def medical_intent(procedure):
     text = "So you want help with %s." % (procedure)
-    if (procedure not in procedure_list):
+    if (procedure in procedure_list):
         session.attributes[PROCEDURE_KEY] = procedure
     else:
         return question("Sorry, I don't know that procedure. Try another one. Hope you're... okay hahaha.")
