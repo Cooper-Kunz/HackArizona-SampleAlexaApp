@@ -10,7 +10,8 @@ app = Flask(__name__)
 ask = Ask(app, "/reddit_reader")
 medical_procedure = None
 PROCEDURE_KEY = "procedure"
-procedure_list = ["nose bleed", "nosebleed", "nose bleeds", "head ache", "heads ache", "headache"]
+procedure_list = ["nose bleed", "nosebleed", "nose bleeds", "noses bled", "nosebleeds", "bleeding nose", "bloody nose", "nose blood",
+                  "bloodienose", "bloodynose", "bloodynoses", "noseblood", "nosebloods"]
 
 # hackathon instruction text
 step0 = "sit down, and tilt head forward so that the blood drains through the nostrils."
