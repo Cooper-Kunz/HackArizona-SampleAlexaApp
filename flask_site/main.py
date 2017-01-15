@@ -51,12 +51,14 @@ def start_skill():
 def share_headlines():
     global current_step
     if (current_step > 0 and current_step < len(steps)):
-        end_msg = "would you like to hear the next step?"
-        next_step_msg = "Next, %s." % (steps[current_step])
+        next_step_msg = "Next, %s" % (steps[current_step])
         if (current_step < len(steps)-1): 
-            next_step_msg += end_msg
-        current_step += 1
-        return question(next_step_msg)
+            next_step_msg += "would you like to hear the next step?"
+            current_step += 1
+            return question(next_step_msg)
+        else:
+            next_step_msg += "I hope I helped you today. Goodbye!"
+            return statement(next_step_msg)
     else:
         if (current_step == end_step):
             return statement("I hope I helped you today. Goodbye!")
@@ -82,7 +84,7 @@ def medical_intent(procedure):
     if (procedure in procedure_list):
         session.attributes[PROCEDURE_KEY] = procedure
     else:
-        return question("Sorry, I don't know that procedure. Try another one. Hope you're... okay hahaha.")
+        return question("Sorry, I don't know that procedure. Please try another one.")
 
     #end_step = last_step_for(procedure)
     #instructions = get_instructions(procedure)
