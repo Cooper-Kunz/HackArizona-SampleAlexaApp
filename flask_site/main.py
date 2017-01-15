@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, current_app
 from flask_ask import Ask, statement, question, session
 import json
 import requests
@@ -40,7 +40,7 @@ def send_text(outgoing, body):
 
 @app.route('/')
 def homepage():
-    return "hi there, how ya doin?"
+    return current_app.send_static_file("static/startbootstrap-landing-page/index.html")
 
 @ask.launch
 def start_skill():
