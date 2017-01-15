@@ -44,7 +44,7 @@ def homepage():
 
 @ask.launch
 def start_skill():
-    if (!current_step):
+    if (not current_step):
         current_step = 0
     welcome_message = "Hi there, would you like us to notify your emergency contacts?"
     return question(welcome_message)
