@@ -48,23 +48,22 @@ def start_skill():
 
 @ask.intent("YesIntent")
 def share_headlines():
-    if (current_step > 0 and current_step < end_step) {
+    if (current_step > 0 and current_step < end_step):
         next_step = "Next, %s" % (steps[current_step])
         current_step++
         return question(next_step)
-    } else {
+    else:
         response_msg = 'Alerting your emergency contacts. Hold on...'
         send_text("+16025617960", "Your emergency contact is wanting to notify you.")
         return statement(headline_msg)
-    }
 
 @ask.intent("NoIntent")
 def no_intent():
-    if (current_step > 0) {
+    if (current_step > 0):
         return statement("Okay then, have a fantastic day! HA! BYE!")
-    } 
-    bye_text = "Okay, which medical procedure would you like me to walk you through?"
-    return question(bye_text)
+    else:
+        bye_text = "Okay, which medical procedure would you like me to walk you through?"
+        return question(bye_text)
 
 @ask.intent("medical_intent", mapping={"procedure" : "Procedure"})
 def medical_intent(procedure):
