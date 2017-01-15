@@ -12,6 +12,7 @@ current_step = 0
 end_step = 3
 medical_procedure = None
 PROCEDURE_KEY = "procedure"
+procedure_list = ["nose bleed", "headache"]
 
 def send_text(outgoing, body):
     # put your own credentials here
@@ -51,7 +52,7 @@ def no_intent():
 @ask.intent("medical_intent", mapping={"procedure" : "Procedure"})
 def medical_intent(procedure):
     text = "So you want help with %s." % (procedure)
-    if (procedure is not None):
+    if (procedure not in procedure_list):
         session.attributes[PROCEDURE_KEY] = procedure
     else:
         return question("Sorry, I don't know that procedure. Try another one. Hope you're... okay hahaha.")
