@@ -53,10 +53,10 @@ def share_headlines():
     global end_step
     if (current_step > 0 and current_step < end_step):
         end_msg = "would you like to hear the next step?"
-        next_step = "Next, %s." % (steps[current_step])
+        next_step_msg = "Next, %s." % (steps[current_step])
         if (current_step < end_step - 1): 
-            current_step += end_msg
-        return question(next_step)
+            next_step_msg += end_msg
+        return question(next_step_msg)
     else:
         if (current_step == end_step):
             return statement("I hope I helped you today. Goodbye!")
