@@ -26,15 +26,15 @@ end_step = 4
 
 def send_text(outgoing, body):
     # put your own credentials here
-    ACCOUNT_SID = "AC3fa7dba82f00ec577cd9da96e50ee0f2"
-    AUTH_TOKEN = "54ded7973a552d9fb6defccd3efac9ed"
+    ACCOUNT_SID = ""
+    AUTH_TOKEN = ""
 
     client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
     print(outgoing, body)
 
     client.messages.create(
         to=outgoing,
-        from_="+14807712950",
+        from_="+1",
         body=body,
     )
 
@@ -64,7 +64,7 @@ def share_headlines():
             return statement("I hope I helped you today. Goodbye!")
         else:
             response_msg = 'Alerting your emergency contacts. Hold on...'
-            send_text("+16025617960", "Your emergency contact is wanting to notify you.")
+            send_text("+1", "Your emergency contact is wanting to notify you.")
             return statement(response_msg)
 
 @ask.intent("NoIntent")
