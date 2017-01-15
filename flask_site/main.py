@@ -29,18 +29,18 @@ def send_text(outgoing, body):
     ACCOUNT_SID = "AC3fa7dba82f00ec577cd9da96e50ee0f2"
     AUTH_TOKEN = "54ded7973a552d9fb6defccd3efac9ed"
 
-    #client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
+    client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
     print(outgoing, body)
 
-    #client.messages.create(
-    #    to=outgoing,
-    #    from_="+14807712950",
-    #    body=body,
-    #)
+    client.messages.create(
+        to=outgoing,
+        from_="+14807712950",
+        body=body,
+    )
 
 @app.route('/')
 def homepage():
-    return current_app.send_static_file("static/startbootstrap-landing-page/index.html")
+    return "Welcome to our Alexa site!"
 
 @ask.launch
 def start_skill():
