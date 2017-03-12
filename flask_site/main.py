@@ -40,7 +40,7 @@ def send_text(outgoing, body):
 
 @app.route('/')
 def homepage():
-    return "Welcome to our Alexa site!"
+    return "Welcome to our Alexa site for MyCareTaker!"
 
 @ask.launch
 def start_skill():
@@ -57,11 +57,11 @@ def share_headlines():
             current_step += 1
             return question(next_step_msg)
         else:
-            next_step_msg += " I hope I helped you today. Goodbye!"
+            next_step_msg += " I hope I helped you today. Goodbye! "
             return statement(next_step_msg)
     else:
         if (current_step == end_step):
-            return statement("I hope I helped you today. Goodbye!")
+            return statement("I hope I helped you today. Goodbye! ")
         else:
             response_msg = 'Alerting your emergency contacts. Hold on...'
             send_text("+1", "Your emergency contact is wanting to notify you.")
@@ -71,7 +71,7 @@ def share_headlines():
 def no_intent():
     global current_step
     if (current_step > 0):
-        return statement("Okay then, have a good day.")
+        return statement("Okay then, have a good day. Goodbye! ")
     else:
         bye_text = "Okay, which medical procedure would you like me to walk you through?"
         return question(bye_text)
@@ -84,7 +84,7 @@ def medical_intent(procedure):
     if (procedure in procedure_list):
         session.attributes[PROCEDURE_KEY] = procedure
     else:
-        return question("Sorry, I don't know that procedure. Please try another one.")
+        return question("Sorry, I don't know that procedure just yet. Please try another one.")
 
     #end_step = last_step_for(procedure)
     #instructions = get_instructions(procedure)
