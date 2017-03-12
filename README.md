@@ -1,4 +1,4 @@
-# Hackathon2k17
+Here is a custom Amazon Alexa skill created at HackArizona 2017, The University of Arizona's Hackathon, named MyCaretaker. 
 
 Ngrok example usage...
 When running a Flask or Django application you typically recieve a message saying something like, "Your application is now running on 127.0.0.0:8000".
